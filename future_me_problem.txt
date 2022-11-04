@@ -1,0 +1,123 @@
+  this.hp -= 10;
+      this.hud.hpBar.setFrame(this.hp);
+      this.hud.dmgBar.playReverse({ key: "dmg", startFrame: this.hp + 5 });
+      this.hud.dmgBar.stopOnFrame(this.hp);
+
+ this.walls = {
+      top: {
+        left: this.physics.add
+          .sprite(0, 0, "wall1")
+          .setScale(5)
+          .setFlip(false, true)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall),
+        right: this.physics.add
+          .sprite(1536, 0, "wall1")
+          .setScale(5)
+          .setFlip(true, true)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall)
+      },
+      bottom: {
+        left: this.physics.add
+          .sprite(0, 2716, "wall1")
+          .setScale(5)
+          .setFlip(false, false)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall),
+        right: this.physics.add
+          .sprite(1536, 2716, "wall1")
+          .setScale(5)
+          .setFlip(true, false)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall)
+      },
+      left: {
+        top: this.physics.add
+          .sprite(100, 0, "wall1")
+          .setScale(5)
+          .setFlip(false, false)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall)
+          .setAngle(90)
+          .setSize(20, 256)
+          .setOffset(-20, 0),
+
+        bottom: this.physics.add
+          .sprite(100, 1536, "wall1")
+          .setScale(5)
+          .setFlip(true, false)
+          .setOrigin(0, 0)
+          .setDepth(this.depths.wall)
+          .setAngle(90)
+          .setSize(20, 256)
+          .setOffset(-20, 0),
+
+      },
+      
+      right: {
+        top: this.physics.add
+          .sprite(2716, 0, "wall1")
+          .setScale(5)
+          .setFlip(true, false)
+          .setOrigin(1, 0)
+          .setAngle(270)
+          .setSize(20, 256)
+          .setOffset(256, 0)
+          .setDepth(this.depths.wall),
+        bottom: this.physics.add
+          .sprite(2716, 1536, "wall1")
+          .setScale(5)
+          .setFlip(false, false)
+          .setOrigin(1, 0)
+          .setAngle(270)
+          .setSize(20, 256)
+          .setOffset(256, 0)
+          .setDepth(this.depths.wall)
+      },
+    };
+
+    
+    this.lightObjects = {
+      wallLanterns: {
+        top: {
+          left: new Lantern({ x: 1250, y: 40 }, this, this.depths.wall_props),
+          right:
+            new Lantern({ x: 1556, y: 40 }, this, this.depths.wall_props)
+
+        },
+        bottom: {
+          left: new Lantern({ x: 1240, y: 2770 }, this, this.depths.wall_props),
+          right: new Lantern({ x: 1556, y: 2770 }, this, this.depths.wall_props)
+        },
+        left: {
+          top: new Lantern({ x: 40, y: 1240 }, this, this.depths.wall_props),
+          bottom: new Lantern({ x: 40, y: 1570 }, this, this.depths.floor_props)
+        },
+        //15, 1585
+        right: {
+          top: new Lantern({ x: 2801, y: 1260 }, this, this.depths.wall_props),
+          bottom: new Lantern({ x: 2801, y: 1556 }, this, this.depths.floor_props)
+
+        },
+      }
+    };
+
+    this.lightedObjects.push(
+      this.walls.top.left,
+      this.walls.top.right,
+      this.walls.bottom.left,
+      this.walls.bottom.right,
+      this.walls.left.top,
+      this.walls.left.bottom,
+      this.walls.right.top,
+      this.walls.right.bottom,
+      this.lightObjects.wallLanterns.top.left.sprite,
+      this.lightObjects.wallLanterns.top.right.sprite,
+      this.lightObjects.wallLanterns.bottom.left.sprite,
+      this.lightObjects.wallLanterns.bottom.right.sprite,
+      this.lightObjects.wallLanterns.left.top.sprite,
+      this.lightObjects.wallLanterns.left.bottom.sprite,
+      this.lightObjects.wallLanterns.right.top.sprite,
+      this.lightObjects.wallLanterns.right.bottom.sprite
+    );
